@@ -5,6 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "dark",
+    "newArchEnabled": false,
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": false,
@@ -31,7 +32,6 @@
       ],
       "expo-secure-store"
     ],
-    "scheme": "liftx",
-    "sdkVersion": "52.0.0"
+    "scheme": "liftx"
   }
 }
