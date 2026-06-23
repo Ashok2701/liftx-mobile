@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { useAuthStore } from '@/store/authStore';
@@ -33,17 +33,17 @@ import { PTSessionDetailScreen } from '@/screens/trainer/PTSessionDetailScreen';
 import { PTCalendarScreen } from '@/screens/trainer/PTCalendarScreen';
 import { TrainerProfileScreen } from '@/screens/trainer/TrainerProfileScreen';
 
-const RootStack = createNativeStackNavigator();
-const AuthStack = createNativeStackNavigator();
+const RootStack = createStackNavigator();
+const AuthStack = createStackNavigator();
 const MemberTab = createBottomTabNavigator();
-const MemberStack = createNativeStackNavigator();
+const MemberStack = createStackNavigator();
 const TrainerTab = createBottomTabNavigator();
-const TrainerStack = createNativeStackNavigator();
+const TrainerStack = createStackNavigator();
 
 const screenOptions = {
   headerShown: false,
   contentStyle: { backgroundColor: Colors.background.primary },
-  animation: 'slide_from_right' as const,
+  
 };
 
 const AuthNavigator = () => (
@@ -74,7 +74,7 @@ const MemberTabs = () => (
 const MemberNavigator = () => (
   <MemberStack.Navigator screenOptions={screenOptions}>
     <MemberStack.Screen name="MemberTabs" component={MemberTabs} />
-    <MemberStack.Screen name="QRCheckIn" component={QRCheckInScreen} options={{ animation: 'slide_from_bottom' }} />
+    <MemberStack.Screen name="QRCheckIn" component={QRCheckInScreen}  />
     <MemberStack.Screen name="AttendanceHistory" component={AttendanceHistoryScreen} />
     <MemberStack.Screen name="ExerciseDetail" component={ExerciseDetailScreen} />
     <MemberStack.Screen name="MembershipDetail" component={MembershipDetailScreen} />
