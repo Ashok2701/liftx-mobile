@@ -11,7 +11,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { LinearGradient } from 'expo-linear-gradient';
-import FastImage from 'react-native-fast-image';
+import { Image } from 'react-native';
 
 import { Colors, Typography, Spacing, BorderRadius } from '@/theme';
 import { Card, Badge, SectionHeader, Skeleton } from '@/components/common';
@@ -340,7 +340,7 @@ const LibraryTab: React.FC<{
           <Card style={styles.libraryExerciseCard}>
             <View style={styles.libraryExerciseRow}>
               {item.thumbnailUrl ? (
-                <FastImage
+                <Image
                   source={{ uri: item.thumbnailUrl }}
                   style={styles.exerciseThumb}
                 />
