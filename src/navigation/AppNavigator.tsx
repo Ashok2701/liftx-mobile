@@ -1,15 +1,12 @@
 import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { useAuthStore } from '@/store/authStore';
 import { Colors, Typography, Spacing } from '@/theme';
 
-// Auth
 import { LoginScreen } from '@/screens/auth/LoginScreen';
-
-// Member
 import { MemberDashboardScreen } from '@/screens/member/DashboardScreen';
 import { WorkoutScreen } from '@/screens/member/WorkoutScreen';
 import { ProgressScreen } from '@/screens/member/ProgressScreen';
@@ -21,8 +18,6 @@ import { MembershipDetailScreen } from '@/screens/member/MembershipDetailScreen'
 import { PTDetailScreen } from '@/screens/member/PTDetailScreen';
 import { AttendanceHistoryScreen } from '@/screens/member/AttendanceHistoryScreen';
 import { NotificationsScreen } from '@/screens/shared/NotificationsScreen';
-
-// Trainer
 import { TrainerDashboardScreen } from '@/screens/trainer/TrainerDashboardScreen';
 import { TrainerMembersScreen } from '@/screens/trainer/TrainerMembersScreen';
 import { TrainerSessionsScreen } from '@/screens/trainer/TrainerSessionsScreen';
@@ -33,18 +28,14 @@ import { PTSessionDetailScreen } from '@/screens/trainer/PTSessionDetailScreen';
 import { PTCalendarScreen } from '@/screens/trainer/PTCalendarScreen';
 import { TrainerProfileScreen } from '@/screens/trainer/TrainerProfileScreen';
 
-const RootStack = createStackNavigator();
-const AuthStack = createStackNavigator();
+const RootStack = createNativeStackNavigator();
+const AuthStack = createNativeStackNavigator();
 const MemberTab = createBottomTabNavigator();
-const MemberStack = createStackNavigator();
+const MemberStack = createNativeStackNavigator();
 const TrainerTab = createBottomTabNavigator();
-const TrainerStack = createStackNavigator();
+const TrainerStack = createNativeStackNavigator();
 
-const screenOptions = {
-  headerShown: false,
-  contentStyle: { backgroundColor: Colors.background.primary },
-  
-};
+const screenOptions = { headerShown: false };
 
 const AuthNavigator = () => (
   <AuthStack.Navigator screenOptions={screenOptions}>
@@ -53,9 +44,9 @@ const AuthNavigator = () => (
 );
 
 const TabIcon = ({ emoji, focused, label }: { emoji: string; focused: boolean; label: string }) => (
-  <View style={tabStyles.iconContainer}>
-    <Text style={[tabStyles.emoji, { opacity: focused ? 1 : 0.45 }]}>{emoji}</Text>
-    <Text style={[Typography.labelSmall, { color: focused ? Colors.brand.primary : Colors.text.muted, marginTop: 2, fontSize: 9 }]}>
+  <View style={{ alignItems: 'center', paddingTop: 6 }}>
+    <Text style={{ fontSize: 22, opacity: focused ? 1 : 0.45 }}>{emoji}</Text>
+    <Text style={{ fontSize: 9, color: focused ? Colors.brand.primary : Colors.text.muted, marginTop: 2, fontWeight: '600' }}>
       {label}
     </Text>
   </View>
@@ -74,7 +65,7 @@ const MemberTabs = () => (
 const MemberNavigator = () => (
   <MemberStack.Navigator screenOptions={screenOptions}>
     <MemberStack.Screen name="MemberTabs" component={MemberTabs} />
-    <MemberStack.Screen name="QRCheckIn" component={QRCheckInScreen}  />
+    <MemberStack.Screen name="QRCheckIn" component={QRCheckInScreen} />
     <MemberStack.Screen name="AttendanceHistory" component={AttendanceHistoryScreen} />
     <MemberStack.Screen name="ExerciseDetail" component={ExerciseDetailScreen} />
     <MemberStack.Screen name="MembershipDetail" component={MembershipDetailScreen} />
@@ -133,7 +124,7 @@ export const AppNavigator = () => {
 
   return (
     <NavigationContainer>
-      <RootStack.Navigator screenOptions={{ headerShown: false, contentStyle: { backgroundColor: Colors.background.primary } }}>
+      <RootStack.Navigator screenOptions={{ headerShown: false }}>
         {!isAuthenticated ? (
           <RootStack.Screen name="Auth" component={AuthNavigator} />
         ) : user?.role === 'MEMBER' ? (
@@ -154,6 +145,4 @@ const tabStyles = StyleSheet.create({
     height: 72,
     paddingBottom: Spacing.sm,
   },
-  iconContainer: { alignItems: 'center', justifyContent: 'center', paddingTop: Spacing.sm },
-  emoji: { fontSize: 22 },
 });
