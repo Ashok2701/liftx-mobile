@@ -4,44 +4,22 @@
     "slug": "liftx-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#0A0A0F"
-    },
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.liftx.mobile",
-      "infoPlist": {
-        "NSCameraUsageDescription": "LiftX uses your camera to scan gym QR codes for check-in.",
-        "NSPhotoLibraryUsageDescription": "LiftX needs access to your photos to upload progress and meal photos.",
-        "NSMicrophoneUsageDescription": "Required for video recording."
-      }
+      "bundleIdentifier": "com.liftx.mobile"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#0A0A0F"
       },
-      "package": "com.liftx.mobile",
-      "permissions": [
-        "CAMERA",
-        "READ_EXTERNAL_STORAGE",
-        "WRITE_EXTERNAL_STORAGE",
-        "VIBRATE",
-        "RECEIVE_BOOT_COMPLETED",
-        "NOTIFICATIONS"
-      ]
+      "package": "com.liftx.mobile"
     },
     "web": {
-      "favicon": "./assets/favicon.png",
       "bundler": "metro"
     },
     "plugins": [
-      "expo-router",
       "expo-font",
       [
         "expo-camera",
@@ -51,18 +29,8 @@
         "expo-image-picker",
         { "photosPermission": "LiftX uses your photos to track your fitness progress." }
       ],
-      [
-        "expo-notifications",
-        {
-          "icon": "./assets/notification-icon.png",
-          "color": "#6C47FF"
-        }
-      ],
       "expo-secure-store"
     ],
-    "scheme": "liftx",
-    "experiments": {
-      "typedRoutes": true
-    }
+    "scheme": "liftx"
   }
 }
