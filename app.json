@@ -11,10 +11,10 @@
       "bundleIdentifier": "com.liftx.mobile"
     },
     "android": {
+      "package": "com.liftx.mobile",
       "adaptiveIcon": {
         "backgroundColor": "#0A0A0F"
-      },
-      "package": "com.liftx.mobile"
+      }
     },
     "web": {
       "bundler": "metro"
@@ -31,6 +31,7 @@
       ],
       "expo-secure-store"
     ],
-    "scheme": "liftx"
+    "scheme": "liftx",
+    "sdkVersion": "52.0.0"
   }
 }
